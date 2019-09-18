@@ -1,13 +1,14 @@
-import { createBottomTabNavigator, createAppContainer } from 'react-navigation';
+import { createAppContainer } from 'react-navigation';
+import { createBottomTabNavigator } from 'react-navigation-tabs';
 import MoviesScreen from '../screens/Movies';
-import TVScreen from '../screens/TV';
+import TvScreen from '../screens/Tv';
 import SearchScreen from '../screens/Search';
 import { BG_COLOR } from '../constants/Colors';
 
-const Tabnavigation = createBottomTabNavigator(
+const TabNavigation = createBottomTabNavigator(
   {
     Movies: MoviesScreen,
-    TV: TVScreen,
+    Tv: TvScreen,
     Search: SearchScreen
   },
   {
@@ -20,4 +21,4 @@ const Tabnavigation = createBottomTabNavigator(
   }
 );
 
-export default createAppContainer(Tabnavigation);
+export default createAppContainer(TabNavigation);

@@ -2,16 +2,15 @@ import React from 'react';
 import { AppLoading } from 'expo';
 import * as Font from 'expo-font';
 import { Ionicons } from '@expo/vector-icons';
-import TabNavigation from './navigation/TabNavigation';
+import { StyleSheet, Text, View } from 'react-native';
+import TabNavigation from './navigations/TabNavigation';
 
 export default class App extends React.Component {
   state = {
     loaded: false
   };
 
-  handleError = err => {
-    console.log(err);
-  };
+  handleError = error => console.log(error);
 
   handleLoaded = () => {
     this.setState({ loaded: true });
@@ -22,6 +21,7 @@ export default class App extends React.Component {
       ...Ionicons.font
     });
   };
+
   render() {
     const { loaded } = this.state;
     if (loaded) {
