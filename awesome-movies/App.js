@@ -7,6 +7,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import TabNavigation from './navigations/TabNavigation';
 import MainNavigation from './navigations/MainNavigation';
 import { MoviesApi } from './Api';
+import axios from 'axios';
 
 export default class App extends React.Component {
   state = {
@@ -25,20 +26,9 @@ export default class App extends React.Component {
     });
   };
 
-  testFunc = () => {
-    MoviesApi.nowPlaying()
-      .then(res => {
-        console.log(res);
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  };
-
   render() {
     const { loaded } = this.state;
     if (loaded) {
-      this.testFunc();
       return (
         <>
           <StatusBar barStyle="light-content" />
