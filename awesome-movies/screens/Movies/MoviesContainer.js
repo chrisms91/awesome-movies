@@ -12,19 +12,39 @@ export default class MoviesContainer extends React.Component {
   };
 
   async componentDidMount() {
+    let upcoming, popular, nowPlaying, error;
     try {
-      const upcoming = await MoviesApi.getUpComing();
-      const popular = await MoviesApi.getPopular();
-      const nowPlaying = await MoviesApi.getNowPlaying();
+      ({
+        data: { results: upcoming }
+      } = await MoviesApi.getUpComing());
+      ({
+        data: { results: popular }
+      } = await MoviesApi.getPopular());
+      ({
+        data: { results: nowPlaying }
+      } = await MoviesApi.getNowPlaying());
     } catch (err) {
-      this.setState({ error: err });
+      error = err;
     } finally {
-      this.setState({ loading: false });
+      this.setState({
+        loading: false,
+        error,
+        upcoming,
+        popular,
+        nowPlaying
+      });
     }
   }
 
   render() {
-    const { loading } = this.state;
-    return <MoviesPresenter loading={loading} />;
+    const { loading, upcoming, popular, nowPlaying } = this.state;
+    return (
+      <MoviesPresenter
+        loading={loading}
+        upcoming={upcoming}
+        popular={popular}
+        nowPlaying={nowPlaying}
+      />
+    );
   }
 }
