@@ -5,7 +5,7 @@ import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { createStackNavigator } from 'react-navigation-stack';
 import MoviesScreen from '../screens/Movies/index';
 import TvScreen from '../screens/Tv/index';
-import SearchScreen from '../screens/Search';
+import SearchScreen from '../screens/Search/index';
 import { BG_COLOR } from '../constants/Colors';
 import TabBarIcon from '../components/TabBarIcon';
 import { createStack } from './Config';
@@ -47,6 +47,7 @@ const TabNavigation = createBottomTabNavigator(
     }
   },
   {
+    initialRouteName: 'Search',
     tabBarOptions: {
       showLabel: false,
       style: {
