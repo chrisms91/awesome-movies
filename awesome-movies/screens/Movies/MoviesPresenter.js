@@ -7,7 +7,6 @@ import MovieSlider from '../../components/MovieSlider';
 import { BG_COLOR } from '../../constants/Colors';
 import Section from '../../components/Section';
 import MovieItem from '../../components/MovieItem';
-import generateKey from '../../utilities/generateKey';
 
 const Container = styled.ScrollView`
   background-color: ${BG_COLOR};
@@ -26,10 +25,10 @@ const MoviesPresenter = ({ loading, upcoming, popular, nowPlaying }) =>
             .map(movie => (
               <MovieItem
                 id={movie.id}
+                key={movie.id}
                 voteAvg={movie.vote_average}
                 title={movie.title}
                 posterPhoto={movie.poster_path}
-                key={generateKey(movie.id)}
               />
             ))}
         </Section>
@@ -42,10 +41,10 @@ const MoviesPresenter = ({ loading, upcoming, popular, nowPlaying }) =>
             .map(movie => (
               <MovieItem
                 id={movie.id}
+                key={movie.id}
                 voteAvg={movie.vote_average}
                 title={movie.title}
                 posterPhoto={movie.poster_path}
-                key={generateKey(movie.id)}
                 horizontal={true}
                 overview={movie.overview}
               />

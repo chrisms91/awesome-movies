@@ -6,7 +6,6 @@ import Layout from '../../constants/Layout';
 import Loader from '../../components/Loader';
 import Section from '../../components/Section';
 import MovieItem from '../../components/MovieItem';
-import generateKey from '../../utilities/generateKey';
 
 const Container = styled.View`
   flex: 1;
@@ -62,10 +61,10 @@ const SearchPresenter = ({
                   .map(movie => (
                     <MovieItem
                       id={movie.id}
+                      key={movie.id}
                       voteAvg={movie.vote_average}
                       title={movie.title}
                       posterPhoto={movie.poster_path}
-                      key={generateKey(movie.id)}
                     />
                   ))}
               </Section>
@@ -83,6 +82,7 @@ const SearchPresenter = ({
                       posterPhoto={tv.poster_path}
                       title={tv.name}
                       voteAvg={tv.vote_average}
+                      isMovie={false}
                     />
                   ))}
               </Section>
